@@ -1,0 +1,33 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+project.group = "com.github.saikos"
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.slf4j:slf4j-api:2.0.17"
+}
+
+publishing {
+
+    publications {
+
+        jar(MavenPublication) {
+            artifactId "${project.name}"
+            version project.version
+            from components.java
+        }
+    }
+}
+
